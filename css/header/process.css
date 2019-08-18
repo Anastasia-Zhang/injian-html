@@ -1,0 +1,31 @@
+.process-video-bottom{
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    width: 80%;
+    margin-top: -10%;
+    font-family: 腾祥嘉丽细圆简;
+}
+.next-p-process{
+    margin-top: 10%;
+    margin-left: -3%;
+    margin-right: 20%;
+    float: left;
+    width: 40%;
+    line-height: 30px;
+    font-size: 23px;
+}
+.next-p-process1{
+    margin-top: 10%;
+    margin-left: -3%;
+    margin-right: 20%;
+    float: left;
+    width: 40%;
+    line-height: 30px;
+    font-size: 23px;
+}
+.img-process1{
+    margin-right: 5%;
+    float: right;
+    margin-top: -15%;
+}

@@ -1,0 +1,101 @@
+.oc-container{
+    width: 100%;
+    font-family: 腾祥嘉丽细圆简;!important;
+}
+.address-header{
+    background: #f3f3f3;
+    font-weight: bold;
+    line-height: 40px;
+    height: 40px;
+}
+#addressContainer{
+    font-size: 18px !important;
+}
+.choose-add-h3{
+    padding-top: 5%;
+    padding-left: 10%;
+    font-family: 腾祥嘉丽细圆简;
+    font-size: 20px;
+
+}
+.choose-add-check-product{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+.choose-add{
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 20px;
+    font-family: 腾祥嘉丽细圆简;!important;
+}
+.check-product{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 30px;
+}
+.address-radio{
+    width: 5%;
+    margin-left: 15px;
+}
+.address-content{
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
+    line-height: 30px;
+}
+.address-table{
+    width: 100%;
+    border: 1px solid #a9a9a9;
+}
+.checkadd-class{
+    margin-left: 15px;
+}
+.order-table{
+    width: 100%;
+    border: 1px solid #a9a9a9;
+}
+.order-header{
+    background: #f3f3f3;
+    font-weight: bold;
+    line-height: 40px;
+    height: 40px;
+}
+.order-content{
+    text-align: center;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    line-height: 30px;
+}
+.order-img{
+    margin-left: 30px;
+    width: 80%;
+    padding: 10px;
+}
+#confirmbtn{
+    float: right;
+    margin-top: 20px;
+    margin-right: 12%;
+    background: #fff;
+    border: 1px solid black;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    padding:5px;
+    border-radius: 10%;
+}
+#confirmbtn:hover{
+    background: black;
+    border: 1px solid white;
+    color: #fff;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,170 @@
+.form-title{
+    text-align: center;
+    font-size: 20px;
+    margin: 10px;
+    font-weight: bold;
+}
+.search-container{
+    margin-bottom: 10px;
+    border: white 1px solid;
+    margin-top: 20px;
+}
+td.search-title{
+    padding: 10px;
+    font-size: 17px;
+    width:10%;
+}
+td.search-content{
+    padding: 10px;
+    font-size: 15px;
+    width: 20%;
+}
+#searchorderStatus{
+    border-radius: 5%;
+    height: 32px;
+    border: 1px solid #a9a9a9;
+    font-size: 12px;
+    width: 90%;
+}
+.search-input{
+    border-radius: 5%;
+    height: 32px;
+    border: 1px solid #a9a9a9;
+    font-size: 12px;
+    width: 90%;
+}
+.searchBtn{
+    background: #fff;
+    border: 1px solid black;
+    color: black;
+    font-size: 15px;
+    padding:5px;
+    border-radius: 10%;
+}
+.searchBtn:hover{
+    background: black;
+    border: 1px solid white;
+    color: #fff;
+}
+th.order-title {
+    padding: 10px;
+    background: #efefef;
+    border-bottom: 1px soild black;
+}
+.order-id{
+    padding: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    background: #fcf8e3;
+}
+.order-content{
+    text-align: center;
+}
+.order-content a{
+    font-size: 15px;
+}
+.order-img{
+    width: 10%;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.item-title a{
+    font-weight: bold;
+    font-size:15px;
+}
+.table-responsive{
+    margin-right: 10%;
+    margin-left: 10%;
+    border: 1px solid #a9a9a9;
+}
+.address-table{
+    width: 95%;
+    font-size: 15px;
+    border: 1px solid #a9a9a9;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+.address-left-cell {
+    text-align: right;
+    padding: 5px;
+    width: 20%;
+}
+.model_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,.6);
+    z-index: 999;
+    display: none;
+}
+.my_model {
+    position: fixed;
+    display: none;
+    top: 20%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -250px;
+    z-index: 9999;
+    width: 500px;
+    height: 300px;
+    border: 1px solid #aeaeae;
+    border-radius: 3px;
+    padding: 20px;
+    background: #fff;
+}
+.my_model .opBtn {
+    margin-top: 20px;
+    margin-left: 30%;
+}
+.my_model .title{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #F66;
+}
+.comment-content{
+    height: 200px;
+    width: 450px;
+    margin-left: 15px;
+}
+.my_model .opBtn a {
+    width: 58px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -ms-border-radius: 1px;
+    border-radius: 1px;
+    display: inline-block;
+    margin-right: 60px;
+    font-weight: 700;
+}
+.my_model .dialog-sure {
+    background: #fff;
+    border: 1px solid black;
+    color: black;
+}
+.my_model .dialog-close {
+    background: #fff;
+    border: 1px solid black;
+    color: black;
+}
+.my_model .title .closeModel {
+    float: right;
+    cursor: pointer;
+}
+.my_model .dialog-sure:hover{
+    background: black;
+    border: 1px solid white;
+    color: #fff;
+}
+.my_model .dialog-close:hover{
+    background: black;
+    border: 1px solid white;
+    color: #fff;
+}

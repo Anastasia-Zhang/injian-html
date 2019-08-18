@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Volton - Responsive Mobile Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/center/amazeui.min.css">
+    <link rel="stylesheet" href="css/center/amazeui.cropper.css">
+    <link rel="stylesheet" href="css/center/custom_up_img.css">
+    <link rel="stylesheet" href="css/center/user_center.css">
+    <style type="text/css">
+        .up-img-cover {width: 100px;height: 100px;}
+        .up-img-cover img{width: 100%;}
+        .goTop >img{
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+        .goTop{
+            position: fixed;
+            right : 20px;
+            bottom : 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/center/normalize.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/center/bootstrap.min.css">
+    <link rel="stylesheet" href="css/center/templatemo-style.css">
+    <script src="js/center/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="js/center/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<h2 class="pass-alter-p">密码修改</h2>
+<div class="page-section" id="safeInfo">
+    <div class="content">
+        <h3 class="number-check-p">手机号验证</h3>
+        <div class="safe-info">
+            <div class="number-label">
+                <label class="control-label">手机号</label><br/>
+                <label class="control-label">验证码</label><br/>
+            </div>
+            <div class="input-num">
+                <div class="input-number">
+                    <input class="form-control" type="text" placeholder="请输入手机号" name="telphone" id="pswd_telphone"/>
+                </div>
+
+                <div class="form-actions">
+                    <div>
+                        <button class="get-otp-btn" id="getotp" type="submit">获取验证码</button>
+                    </div>
+                </div>
+
+                <div class="input-otp">
+                    <div>
+                        <input class="form-control" type="text" placeholder="请输入验证码" name="otp" id="otp"/>
+
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div>
+                        <button class="pass-btn" id="confirmotp" type="submit">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h3 class="number-check-p">密码修改</h3>
+        <div class="safe-info">
+            <div class="number-label">
+                <label class="control-label">新密码</label><br/>
+                <label class="control-label">密码确认</label><br/>
+            </div>
+            <div class="input-num">
+                <div class="input-pass">
+                    <div>
+                        <input class="form-control" type="password" placeholder="请设置密码" name="password" id="password"/>
+                    </div>
+                </div>
+                <div class="input-repass">
+
+                    <div>
+                        <input class="form-control" type="password" placeholder="请确认密码" name="confirmpassword" id="confirmpassword"/>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="pass-btn" id="confirmPasswordBtn" type="submit">
+                        确认修改
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="goTop" id="js-go_top"><img src="img/icon_top.png" alt="回到顶部图片"></div>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="js/goToTop/GoToTop.js"></script>
+<script>
+    //示例
+    $('#js-go_top').gotoTop({
+        offset : 500, //距离顶部的位置
+        speed : 300, //移动到顶部的速度
+        /*     iconSpeed : 300, //icon动画样式的速度*/
+        animationShow : {
+            'transform' : 'translate(0,0)',
+            'transition': 'transform .5s ease-in-out'
+        }, //icon动画样式显示时
+        animationHide : {
+            'transform' : 'translate(80px,0)',
+            'transition': 'transform .5s ease-in-out'
+        } //icon动画样式隐藏时
+    });
+</script>
+<script>
+    var g_userVO = {};
+    var g_addressList = [];
+    var g_addressVO = {};
+
+
+
+
+    jQuery(document).ready(function() {
+
+
+        $("#getotp").on("click",function(){
+            g_telphone = $("#pswd_telphone").val();
+            if (g_telphone == null|| g_telphone == "") {
+                alert("手机号不能为空");
+                return false;
+            }
+            $.ajax({
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                url:"http://localhost:8070/user/getotp",
+                data:{
+                    "telphone":$("#pswd_telphone").val(),
+                    "isconfirm":'yes',
+                },
+                //使后端允许跨域请求@CrossOrigin(allowCredentials = "true",allowedHeaders = "*")
+                xhrFields:{withCredentials:true},
+                success:function(data){
+                    if(data.status =="success"){
+                        alert("已发送请注意查收");
+
+                    }else{
+                        alert("发送失败，原因为"+data.data.errMsg);
+                    }
+                },
+                error:function(data){
+                    alert("发送失败，原因为"+data.responseText);
+                }
+            });
+            return false;
+        });
+
+        $("#confirmotp").on("click",function(){
+            var otp = $("#otp").val();
+            if (otp == null|| otp == "") {
+                alert("验证码不能为空");
+                return false;
+            }
+            $.ajax({
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                url:"http://localhost:8070/user/confirmotp",
+                data:{
+                    "telphone":g_telphone,
+                    "otpCode":otp,
+                },
+                //使后端允许跨域请求
+                xhrFields:{withCredentials:true},
+                success:function(data){
+                    if(data.status =="success"){
+                        alert("验证码正确");
+                        //可以修改密码
+                        $("#confirmPasswordBtn").attr("disabled" ,false);
+                    }else{
+                        alert("验证码错误，原因为"+data.data.errMsg);
+                    }
+                },
+                error:function(data){
+                    alert("验证码错误，原因为"+data.responseText);
+                }
+            });
+            return false;
+        });
+        $("#confirmPasswordBtn").on("click",function(){
+            var password = $("#password").val();
+            var confirmpassword = $("#confirmpassword").val();
+            if (password == null|| password == "") {
+                alert("密码不能为空");
+                return false;
+            }
+            if (confirmpassword == null || confirmpassword == ""){
+                alert("确认密码不能为空");
+                return false;
+            }
+            if (password != confirmpassword) {
+                alert("两次输入密码不一致");
+                return false;
+            }
+            $.ajax({
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                url:"http://localhost:8070/user/password",
+                data:{
+                    "password" :$("#password").val(),
+                },
+                xhrFields:{withCredentials:true},//使后端允许跨域请求@CrossOrigin(allowCredentials = "true",allowedHeaders = "*")
+                success:function(data){
+                    if(data.status =="success"){
+                        alert("成功");
+                    }else{
+                        alert("失败，原因为： "+data.data.errMsg);
+                    }
+                },
+                error:function(data){
+                    alert("失败，原因为"+data.responseText);
+                }
+            });
+            return false;
+        });
+    });
+
+
+
+    // function getParam(paramName)
+    // {
+    //     paramValue = "", isFound = !1;
+    //     if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1)
+    //     {
+    //         arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+    //         while (i < arrSource.length && !isFound)
+    //             arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() ==
+    //             paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+    //     }
+    //     return paramValue == "" && (paramValue = null), paramValue
+    // }
+
+</script>
+
+<script src="js/center/vendor/jquery-1.10.2.min.js"></script>
+<script src="js/center/min/plugins.min.js"></script>
+<script src="js/center/min/main.min.js"></script>
+<script src="js/jquery.min.js" charset="utf-8"></script>
+<script src="js/center/amazeui.min.js" charset="utf-8"></script>
+<script src="js/center/cropper.min.js" charset="utf-8"></script>
+<script src="js/center/custom_up_img.js" charset="utf-8"></script>
+<style>
+    .td-del-alt a{
+        color: black;
+        padding-top: 4%;
+    }
+    .td-del-alt a:hover
+    {
+        color: red;
+    }
+    .tr-table{
+        padding-top: 4%;
+    }
+</style>
+<style>
+
+    .panel_login_after {
+        background: white;
+        position: fixed;
+        right: 0;
+        top: 81px;
+        padding: 30px 40px;
+        display: none;
+        -webkit-box-shadow: 0px 29px 36px 0px rgba(0,0,0,0.15);
+        -moz-box-shadow: 0px 29px 36px 0px rgba(0,0,0,0.15);
+        box-shadow: 0px 29px 36px 0px rgba(0,0,0,0.15);
+        z-index:-1;
+    }
+    div#accedi:hover .panel_login_after {
+        display: block;
+    }
+    a.weixin {
+        position: relative;
+    }
+
+    .weixin img.qrcode {
+        position: absolute;
+        z-index: 80;
+        width: 100px;
+        max-width: none;
+        height: 100px;
+        transform: scale(0);
+        transform-origin: top right;
+        opacity: 0;
+        border: .3125rem solid transparent;
+        border-radius: .25rem;
+        -webkit-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+
+    }
+
+    .weixin:hover img.qrcode {
+        transform: scale(1);
+        opacity: 1;
+    }
+    /* 动态为footer添加类fixed-bottom */
+    .fixed-bottom {position: fixed;bottom: 0;width:100%;}
+    .goTop >img{
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+    .goTop{
+        position: fixed;
+        right : 20px;
+        bottom : 20px;
+    }
+</style>
+</body>
+</html>

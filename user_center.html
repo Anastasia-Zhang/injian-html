@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Volton - Responsive Mobile Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/center/amazeui.min.css">
+    <link rel="stylesheet" href="css/center/amazeui.cropper.css">
+    <link rel="stylesheet" href="css/center/custom_up_img.css">
+    <link rel="stylesheet" href="css/center/user_center.css">
+    <style type="text/css">
+        .up-img-cover {width: 100px;height: 100px;}
+        .up-img-cover img{width: 100%;}
+        .goTop >img{
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+        .goTop{
+            position: fixed;
+            right : 20px;
+            bottom : 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/center/normalize.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/center/bootstrap.min.css">
+    <link rel="stylesheet" href="css/center/templatemo-style.css">
+    <script src="js/center/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="js/center/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- SIDEBAR -->
+<div class="sidebar-menu hidden-xs hidden-sm">
+    <div class="top-section">
+        <div class="profile-image" >
+            <img alt="用户头像" id="menuImg" src="img/center/profile.jpg">
+        </div>
+        <h3 class="profile-title">您好，</h3>
+        <p class="profile-description" id="menuUsername" style="font-size: 18px;"></p>
+    </div> <!-- top-section -->
+    <div class="main-navigation">
+        <ul class="navigation">
+            <li><a href="#userInfo"><i class="fa fa-user"></i> &nbsp;个人信息</a></li>
+            <li><a href="#addressInfo"><i class="fa fa-pencil"></i> &nbsp;收货地址</a></li>
+            <li><a href="#safeInfo"><i class="fa fa-lock"></i> &nbsp; 安全信息</a></li>
+            <li><a onclick="window.location = 'user_cart.html'" href=""><i class="fa fa-shopping-cart"></i>我的购物车</a></li>
+            <li><a onclick="window.location = 'user_order.html'" href=""><i class="fa fa-list"></i>我的订单</a></li>
+        </ul>
+    </div> <!-- .main-navigation -->
+</div> <!-- .sidebar-menu -->
+
+
+
+<div class="banner-bg"  id="userInfo">
+    <div class="gerenzhongxin">个人中心&nbsp;&nbsp;&nbsp;&nbsp;User center</div>
+    <a onclick="window.location = 'home.html'" class="return-home"><i class="fa fa-reply"></i>返回首页</a><hr/>
+    <div class="p-user-info">个人信息</div>
+    <div class="info-user-list">
+        <div class="user-info-display">
+            <div>用户名：
+                <lable class="control-label" id="userName"></lable>
+            </div>
+            <div>性别：
+                <lable class="control-label" id="gender"></lable>
+            </div>
+            <div>电话：
+                <lable class="control-label" id="telphone"></lable>
+            </div>
+            <div>邮箱：
+                <lable class="control-label" id="email"></lable>
+            </div>
+        </div>
+    </div>
+        <hr/>
+    <div class="alter-img-info">
+
+        <button id="imageUploadBtn" class="alter-user-img">
+            修改头像
+        </button>
+
+        <div id="imageUpload">
+            <p class="user-img-p">用户头像</p>
+            <form action="imageUpload" method="post" enctype="multipart/form-data" class="up-up-file">
+                <div class="file-box-ch">
+
+                    <a href="javascript:;" class="a-upload">
+                        <input  class= "file-btn-ch" type="file" name="fileName" id="filename" accept="image/png, image/jpeg, image/jpg" onchange="checkImage()"/>点击这里上传文件
+                    </a>
+                    <a href="javascript:;" class="file">选择文件
+                    </a>
+                </div>
+                <div id="onLoadImage"></div>
+                <div class="">
+                    <input type="button" id="submitBtn" onclick="checkSubmit()" class="up-img-file" value="上传"/>
+                </div>
+            </form>
+        </div>
+
+        <button id="updateinfoBtn" class="alter-user-info">
+            修改个人信息
+        </button><br/>
+        <div id="updateInfoContainer" class="alter-gr-info">
+            <div class="lable-info">
+                <label class="user-name">用户名</label><br/>
+                <label class="control-label">性别</label><br/>
+                <label class="control-label">邮箱</label><br/>
+            </div>
+            <div class="input-name">
+                <div class="alter-user-name">
+                    <div>
+                        <input class="form-control" type="text" placeholder="请输入用户名" name="updateName" id="updateName"/>
+                    </div>
+                </div>
+
+                <div class="alter-user-gender">
+                    <div>
+                        <input type="radio" name="updateGender" id="updateGender1" value="1" />男
+                        <input type="radio" name="updateGender" id="updateGender2" value="0" />女
+                    </div>
+                </div>
+
+                <div class="alter-user-email">
+                    <div>
+                        <input class="form-control" type="text" placeholder="请输入邮箱" name="updateEmail" id="updateEmail"/>
+                    </div>
+                </div>
+            </div>
+            <div class="submit-user-info-alter">
+                <button class="submit-user-info-alter-b" id="confirmUpdate">确认修改</button>
+            </div>
+        </div>
+
+    </div>
+    <hr/>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <div class="fluid-container">
+        <div class="content-wrapper">
+            <!--地址信息-->
+            <div class="address-info" id="addressInfo">
+                <div class="from-group"><h2 class="p-address-info">收货地址</h2>
+                    <div class="table-address">
+                        <table class="" style="width: 100%">
+                            <thead>
+                            <tr>
+                                <th>收件人姓名</th>
+                                <th>收件人电话</th>
+                                <th>邮编</th>
+                                <th>详细地址</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="container">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div><hr/>
+                <div class="content">
+                    <h3 class="p-alter-address">添加修改收货地址</h3>
+                    <div class="add-panel">
+                        <div class="add-label">
+                            <label class="control-label">收件人姓名</label><br/>
+                            <label class="control-label">收件人电话</label><br/>
+                            <label class="control-label">邮编</label><br/>
+                            <label class="control-label">详细地址</label><br/>
+                        </div>
+                        <div class="add-input">
+                            <div class="from-group">
+                                    <input class="input-uname" type="text" placeholder="请输入收件人姓名" name="rcvdName" id="rcvdName"/>
+                            </div>
+                            <div class="from-group">
+                                    <input class="input-unum" type="text" placeholder="请输入收件人电话" name="rcvdTel" id="rcvdTel"/>
+                            </div>
+                            <div class="from-group">
+                                    <input class="input-uemail" type="text" placeholder="请输入邮编" name="zipCode" id="zipCode"/>
+                            </div>
+                            <div class="from-group">
+                                    <input class="input-uadd" type="text" placeholder="请输入详细地址" name="addressDetail" id="addressDetail"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="addbtnContainer" class ="form-actions">
+                        <button class="sub-btn" id="addAddress" type="submit">
+                            提交创建
+                        </button>
+                    </div>
+                    <div id="updatebtnContainer" class ="form-actions">
+                        <button class="save-btn" id="updateAddress" type="submit">
+                            保存修改
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <hr>
+        <div>
+            <!-- 安全信息 -->
+            <h2 class="pass-alter-p">密码修改</h2>
+            <div class="page-section" id="safeInfo">
+                <div class="content">
+                    <h3 class="number-check-p">手机号验证</h3>
+                    <div class="safe-info">
+                        <div class="number-label">
+                            <label class="control-label">手机号</label><br/>
+                            <label class="control-label">验证码</label><br/>
+                        </div>
+                        <div class="input-num">
+                            <div class="input-number">
+                                    <input class="form-control" type="text" placeholder="请输入手机号" name="telphone" id="pswd_telphone"/>
+                            </div>
+
+                            <div class="form-actions">
+                                <div>
+                                    <button class="get-otp-btn" id="getotp" type="submit">获取验证码</button>
+                                </div>
+                            </div>
+
+                            <div class="input-otp">
+                                <div>
+                                    <input class="form-control" type="text" placeholder="请输入验证码" name="otp" id="otp"/>
+
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div>
+                                    <button class="pass-btn" id="confirmotp" type="submit">确认</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3 class="number-check-p">密码修改</h3>
+                    <div class="safe-info">
+                        <div class="number-label">
+                            <label class="control-label">新密码</label><br/>
+                            <label class="control-label">密码确认</label><br/>
+                        </div>
+                        <div class="input-num">
+                            <div class="input-pass">
+                                <div>
+                                    <input class="form-control" type="password" placeholder="请设置密码" name="password" id="password"/>
+                                </div>
+                            </div>
+                            <div class="input-repass">
+
+                                <div>
+                                    <input class="form-control" type="password" placeholder="请确认密码" name="confirmpassword" id="confirmpassword"/>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button class="pass-btn" id="confirmPasswordBtn" type="submit">
+                                    确认修改
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+
+        </div>
+
+    </div>
+</div>
+<div class="goTop" id="js-go_top"><img src="img/icon_top.png" alt="回到顶部图片"></div>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="js/goToTop/GoToTop.js"></script>
+<script>
+    //示例
+    $('#js-go_top').gotoTop({
+        offset : 500, //距离顶部的位置
+        speed : 300, //移动到顶部的速度
+        /*     iconSpeed : 300, //icon动画样式的速度*/
+        animationShow : {
+            'transform' : 'translate(0,0)',
+            'transition': 'transform .5s ease-in-out'
+        }, //icon动画样式显示时
+        animationHide : {
+            'transform' : 'translate(80px,0)',
+            'transition': 'transform .5s ease-in-out'
+        } //icon动画样式隐藏时
+    });
+</script>
+<script>
+    var g_userVO = {};
+    var g_addressList = [];
+    var g_addressVO = {};
+    //获取用户信息
+    function queryUserInfo(){
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8070/user/get",
+            xhrFields:{withCredentials:true},
+            success:function(data){
+                if(data.status =="success"){
+                    g_userVO = data.data;
+                    reloadUserDOM();
+                }else{
+                    alert("获取信息失败，原因为： "+data.data.errMsg);
+                }
+            },
+            error:function(data){
+                alert("获取信息失败，原因为"+data.responseText);
+            }
+        });
+    }
+    //刷新用户信息
+    function reloadUserDOM(){
+        $("#menuUsername").text(g_userVO.username);
+        $("#menuImg").attr("src",g_userVO.imgUrl);
+        $("#userName").text(g_userVO.username);
+        if(g_userVO.gender == 0){
+            $("#gender").text("女");
+        }
+        else if(g_userVO.gender == 1){
+            $("#gender").text("男");
+        }
+        $("#telphone").text(g_userVO.telphone);
+        $("#email").text(g_userVO.email);
+        //$("#imgUrl").attr("src",g_userVO.imgUrl);
+    }
+
+    function checkImage() {
+        var fileName=$("#filename").val();
+        fileName=fileName.replace("C:\\fakepath\\","");
+        var flag=true;
+        if(fileName==""){
+            flag=false;
+            alert("请选择图片");
+        }
+        else{
+            var size = $("#filename")[0].files[0].size;
+            if(size/1000>100){
+                flag=false;
+                alert("图片大小不能超过100KB");
+            }
+        }
+        if(flag){
+            onLoadImage();
+        }
+        else{//清除input type=file的显示内容
+            $("#filename").val("");
+        }
+        return flag;
+    }
+
+    //预览图片
+    function onLoadImage() {
+        var file=$('#filename').get(0).files[0];
+        var reader = new FileReader();
+        //将文件以Data URL形式读入页面
+        reader.readAsDataURL(file);
+        reader.onload=function(e){
+            //显示文件
+            $("#onLoadImage").html('<img style="width:100px;height:auto" src="' + this.result +'" alt="" />');
+        }
+    }
+
+    //上传图片
+    /*上传图片
+      1.processData设置为false。因为data值是FormData对象，不需要对数据做处理。
+      2.<form>标签添加enctype="multipart/form-data"属性。
+      3.cache设置为false，上传文件不需要缓存。
+      4.contentType设置为false，不设置contentType值，因为是由<form>表单构造的FormData对象，且已经声明了属性enctype="multipart/form-data"，所以这里设置为false。
+      */
+    function checkSubmit() {
+        var formdata=new FormData();
+        formdata.append('fileName',$('#filename').get(0).files[0]);
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url: "http://localhost:8070/user/imageUpload",
+            dataType: 'json',
+            data: formdata,
+            contentType:false,//ajax上传图片需要添加
+            processData:false,//ajax上传图片需要添加
+            xhrFields:{withCredentials:true},
+            success: function (data) {
+                if(data.status =="success"){
+                    alert("上传成功");
+                    window.location.reload();
+                }else{
+                    alert("上传失败，原因为： "+data.data.errMsg);
+                }
+                window.location.reload();
+            },
+            error: function (data) {
+                alert("上传失败，原因为"+data.responseText);
+            }
+        })
+    }
+    function queryAddressList(){
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8070/address/listAddress",
+            xhrFields:{withCredentials:true},
+            success:function(data){
+                if(data.status =="success"){
+                    //获取后端数据
+                    g_addressList = data.data;
+                    reloadAddressDOM();
+
+                }else{
+                    alert("获取地址信息失败，原因为： "+data.data.errMsg);
+                }
+            },
+            error:function(data){
+                alert("获取地址信息创建失败，原因为"+data.responseText);
+            }
+        });
+    }
+    function reloadAddressDOM(){
+        $("#updatebtnContainer").hide();
+        for (var i = 0; i < g_addressList.length; i++) {
+            var addressVO = g_addressList[i];
+            var dom = "<tr data-id='"+addressVO.addressId+"' id='itemDetail"+addressVO.id+"'>"+
+                "<td  class='tr-table'>"+addressVO.rcvdName+"</td>"+
+                "<td  class='tr-table'>"+addressVO.rcvdTel+"</td>"+
+                "<td  class='tr-table'>"+addressVO.zipCode+"</td>"+
+                "<td  class='tr-table'>"+addressVO.addressDetail+"</td>"+
+                "<td class='td-del-alt'><a data-id='"+ addressVO.addressId+"'id = 'delAddress"+ addressVO.addressId+"' href='#''>删除</a>|<a href='#' data-id='"+ addressVO.addressId+"'id = 'updateAddress"+ addressVO.addressId+"' >修改</a></td>"
+            "</tr>";
+
+            $("#container").append($(dom));
+
+            $("#delAddress"+addressVO.addressId).on("click",function(){
+                //当前地址id
+                var cur_addressId = $(this).data("id");
+                $.ajax({
+                    type:"POST",
+                    contentType:"application/x-www-form-urlencoded",
+                    url:"http://localhost:8070/address/delAddress",
+
+                    data:{
+                        "addressId":cur_addressId,
+                    },
+                    xhrFields:{withCredentials:true},
+
+                    success:function(data){
+                        if(data.status =="success"){
+                            alert("删除成功")
+                            window.location.reload();
+                        }else{
+                            alert("删除失败，原因为： "+data.data.errMsg);
+
+                        }
+                    },
+                    error:function(data){
+                        alert("删除失败，原因为"+data.responseText);
+                    }
+                });
+            });
+            $("#updateAddress"+addressVO.addressId).on("click",function(){
+                //保存修改按钮刷新页面
+                var cur_addressId = $(this).data("id");
+                reloadDOMforUpdate(cur_addressId);
+            });
+        }//for
+    }
+    function reloadDOMforUpdate(cur_addressId){
+        var addressVO = {};//address类
+        for (var i = 0; i < g_addressList.length; i++) {
+            if(cur_addressId == g_addressList[i].addressId){
+                addressVO = g_addressList[i];
+                g_addressVO = g_addressList[i];
+                break;
+            }
+        }
+        $("#rcvdName").val(addressVO.rcvdName);
+        $("#rcvdTel").val(addressVO.rcvdTel);
+        $("#zipCode").val(addressVO.zipCode);
+        $("#addressDetail").val(addressVO.addressDetail);
+        $("#addbtnContainer").hide();
+        $("#updatebtnContainer").show();
+
+    }
+
+
+
+    jQuery(document).ready(function() {
+
+        $("#updateInfoContainer").hide();
+        $("#imageUpload").hide();
+        queryUserInfo();
+        queryAddressList();
+        $("#confirmPasswordBtn").attr("disabled" ,true);
+
+        $("#updateinfoBtn").on("click",function(){
+            var $updateContaoner = $("#updateInfoContainer");
+            if(!$($updateContaoner).is(':visible')){
+                $($updateContaoner).show();
+            }else{
+                $($updateContaoner).hide();
+            }
+            $("#updateEmail").val(g_userVO.email);
+            $("#updateName").val(g_userVO.username);
+            //是单选按钮处于性别选中状态
+            if(g_userVO.gender == 0){
+                $("input[type=radio][name=updateGender][value=0]").attr("checked",'checked');
+            }
+            else if(g_userVO.gender == 1){
+                $("input[type=radio][name=updateGender][value=1]").attr("checked",'checked');
+            }
+        });
+        $("#confirmUpdate").on("click",function(){
+            var email = $("#updateEmail").val();
+            var gender =  $('input:radio[name="updateGender"]:checked').val();
+            var name = $("#updateName").val();
+            if (email == null|| email == "") {
+                alert("邮箱不能为空");
+                return false;
+            }
+            if (gender == null|| gender == "") {
+                alert("性别不能为空");
+                return false;
+            }
+            if (name == null|| name == "") {
+                alert("姓名不能为空");
+                return false;
+            }
+            $.ajax({
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                url:"http://localhost:8070/user/update",
+                data:{
+                    "email" : email,
+                    "gender" : gender,
+                    "name" : name,
+                },
+                xhrFields:{withCredentials:true},//使后端允许跨域请求@CrossOrigin(allowCredentials = "true",allowedHeaders = "*")
+                success:function(data){
+                    if(data.status =="success"){
+                        alert("修改成功");
+                        window.location.reload();
+                    }else{
+                        alert("修改失败，原因为： "+data.data.errMsg);
+                    }
+                },
+                error:function(data){
+                    alert("修改失败，原因为"+data.responseText);
+                }
+            });
+        });
+        $("#imageUploadBtn").on("click",function () {
+            var $imageUpload = $("#imageUpload");
+            if(!$($imageUpload).is(':visible')){
+                $($imageUpload).show();
+            }else{
+                $($imageUpload).hide();
+            }
+        });
+        $("#updateAddress").on("click",function(){
+            var rcvdName = $("#rcvdName").val();
+            var rcvdTel = $("#rcvdTel").val();
+            var zipCode = $("#zipCode").val();
+            var addressDetail = $("#addressDetail").val();
+            var addressId  = g_addressVO.addressId;
+
+            if (rcvdName == null|| rcvdName  == "") {
+                alert("收件人姓名不能为空");
+                return false;
+            }
+            if (rcvdTel == null|| rcvdTel == "") {
+                lert("收件人电话不能为空");
+                return false;
+            }
+            if (zipCode == null|| zipCode == "") {
+                alert("邮编不能为空");
+                return false;
+            }
+            if (addressDetail == null|| addressDetail == "") {
+                alert("详细地址不能为空");
+                return false;
+            }
+
+            $.ajax({
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                url:"http://localhost:8070/address/updateAddress",
+                data:{
+                    "rcvdName":rcvdName,
+                    "rcvdTel" :rcvdTel,
+                    "zipCode" : zipCode,
+                    "addressDetail" : addressDetail,
+                    "addressId":addressId
+
+                },
+                xhrFields:{withCredentials:true},
+                success:function(data){
+                    if(data.status =="success"){
+                        alert("修改成功");
+                        window.location.reload();
+
+                    }else{
+                        alert("修改失败，原因为： "+data.data.errMsg);
+                        if(data.data.errCode==20003){
+                            window.location.href = "login.html";
+                        }
+                    }
+                },
+                error:function(data){
+                    alert("修改失败，原因为"+data.responseText);
+                }
+            });
+        });
+
+        $("#addAddress").on("click",function(){
+            var rcvdName = $("#rcvdName").val();
+            var rcvdTel = $("#rcvdTel").val();
+            var zipCode = $("#zipCode").val();
+            var addressDetail = $("#addressDetail").val();
+
+            if (rcvdName == null|| rcvdName  == "") {
+                alert("收件人姓名不能为空");
+                return false;
+            }
+            if (rcvdTel == null|| rcvdTel == "") {
+                lert("收件人电话不能为空");
+                return false;
+            }
+            if (zipCode == null|| zipCode == "") {
+                alert("邮编不能为空");
+                return false;
+            }
+            if (addressDetail == null|| addressDetail == "") {
+                alert("详细地址不能为空");
+                return false;
+            }
+            $.ajax({
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                url:"http://localhost:8070/address/addAddress",
+                data:{
+                    "rcvdName":rcvdName,
+                    "rcvdTel" :rcvdTel,
+                    "zipCode" : zipCode,
+                    "addressDetail" : addressDetail,
+                },
+                xhrFields:{withCredentials:true},
+                success:function(data){
+                    if(data.status =="success"){
+                        alert("添加成功");
+                        window.location.reload();
+
+                    }else{
+                        alert("添加失败，原因为： "+data.data.errMsg);
+                        if(data.data.errCode==20003){
+                            window.location.href = "login.html";
+                        }
+                    }
+                },
+                error:function(data){
+                    alert("添加失败，原因为"+data.responseText);
+                }
+            });
+        });
+
+        $("#getotp").on("click",function(){
+            g_telphone = $("#pswd_telphone").val();
+            if (g_telphone == null|| g_telphone == "") {
+                alert("手机号不能为空");
+                return false;
+            }
+            $.ajax({
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                url:"http://localhost:8070/user/getotp",
+                data:{
+                    "telphone":$("#pswd_telphone").val(),
+                },
+                //使后端允许跨域请求@CrossOrigin(allowCredentials = "true",allowedHeaders = "*")
+                xhrFields:{withCredentials:true},
+                success:function(data){
+                    if(data.status =="success"){
+                        alert("已发送请注意查收");
+
+                    }else{
+                        alert("发送失败，原因为"+data.data.errMsg);
+                    }
+                },
+                error:function(data){
+                    alert("发送失败，原因为"+data.responseText);
+                }
+            });
+            return false;
+        });
+
+        $("#confirmotp").on("click",function(){
+            var otp = $("#otp").val();
+            if (otp == null|| otp == "") {
+                alert("验证码不能为空");
+                return false;
+            }
+            $.ajax({
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                url:"http://localhost:8070/user/confirmotp",
+                data:{
+                    "telphone":g_telphone,
+                    "otpCode":otp,
+                },
+                //使后端允许跨域请求
+                xhrFields:{withCredentials:true},
+                success:function(data){
+                    if(data.status =="success"){
+                        alert("验证码正确");
+                        //可以修改密码
+                        $("#confirmPasswordBtn").attr("disabled" ,false);
+                    }else{
+                        alert("验证码错误，原因为"+data.data.errMsg);
+                    }
+                },
+                error:function(data){
+                    alert("验证码错误，原因为"+data.responseText);
+                }
+            });
+            return false;
+        });
+        $("#confirmPasswordBtn").on("click",function(){
+            var password = $("#password").val();
+            var confirmpassword = $("#confirmpassword").val();
+            if (password == null|| password == "") {
+                alert("密码不能为空");
+                return false;
+            }
+            if (confirmpassword == null || confirmpassword == ""){
+                alert("确认密码不能为空");
+                return false;
+            }
+            if (password != confirmpassword) {
+                alert("两次输入密码不一致");
+                return false;
+            }
+            $.ajax({
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                url:"http://localhost:8070/user/password",
+                data:{
+                    "password" :$("#password").val(),
+                },
+                xhrFields:{withCredentials:true},//使后端允许跨域请求@CrossOrigin(allowCredentials = "true",allowedHeaders = "*")
+                success:function(data){
+                    if(data.status =="success"){
+                        alert("成功");
+                    }else{
+                        alert("失败，原因为： "+data.data.errMsg);
+                    }
+                },
+                error:function(data){
+                    alert("失败，原因为"+data.responseText);
+                }
+            });
+            return false;
+        });
+    });
+
+
+
+    // function getParam(paramName)
+    // {
+    //     paramValue = "", isFound = !1;
+    //     if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1)
+    //     {
+    //         arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+    //         while (i < arrSource.length && !isFound)
+    //             arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() ==
+    //             paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+    //     }
+    //     return paramValue == "" && (paramValue = null), paramValue
+    // }
+
+</script>
+
+<script src="js/center/vendor/jquery-1.10.2.min.js"></script>
+<script src="js/center/min/plugins.min.js"></script>
+<script src="js/center/min/main.min.js"></script>
+<script src="js/jquery.min.js" charset="utf-8"></script>
+<script src="js/center/amazeui.min.js" charset="utf-8"></script>
+<script src="js/center/cropper.min.js" charset="utf-8"></script>
+<script src="js/center/custom_up_img.js" charset="utf-8"></script>
+<style>
+    .td-del-alt a{
+        color: black;
+        padding-top: 4%;
+    }
+    .td-del-alt a:hover
+    {
+        color: red;
+    }
+    .tr-table{
+        padding-top: 4%;
+    }
+</style>
+<style>
+
+    .panel_login_after {
+        background: white;
+        position: fixed;
+        right: 0;
+        top: 81px;
+        padding: 30px 40px;
+        display: none;
+        -webkit-box-shadow: 0px 29px 36px 0px rgba(0,0,0,0.15);
+        -moz-box-shadow: 0px 29px 36px 0px rgba(0,0,0,0.15);
+        box-shadow: 0px 29px 36px 0px rgba(0,0,0,0.15);
+        z-index:-1;
+    }
+    div#accedi:hover .panel_login_after {
+        display: block;
+    }
+    a.weixin {
+        position: relative;
+    }
+
+    .weixin img.qrcode {
+        position: absolute;
+        z-index: 80;
+        width: 100px;
+        max-width: none;
+        height: 100px;
+        transform: scale(0);
+        transform-origin: top right;
+        opacity: 0;
+        border: .3125rem solid transparent;
+        border-radius: .25rem;
+        -webkit-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+
+    }
+
+    .weixin:hover img.qrcode {
+        transform: scale(1);
+        opacity: 1;
+    }
+    /* 动态为footer添加类fixed-bottom */
+    .fixed-bottom {position: fixed;bottom: 0;width:100%;}
+    .goTop >img{
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+    .goTop{
+        position: fixed;
+        right : 20px;
+        bottom : 20px;
+    }
+</style>
+</body>
+</html>

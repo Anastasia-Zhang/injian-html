@@ -1,0 +1,111 @@
+/*实现网页淡入淡出效果*/
+@keyframes fadein{
+    0%{opacity: 0;
+    }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-webkit-keyframes fadein{
+    0%{opacity: 0;
+    }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-moz-keyframes fadein{
+    0%{opacity: 0;
+    }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-o-keyframes fadein{
+    0%{opacity: 0;
+    }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-ms-keyframes fadein{
+    0%{opacity: 0;
+    }
+    100%{
+        opacity: 1;
+
+    }
+}
+body {
+    animation: fadein 5s linear 1;
+    -webkit-animation: fadein 5s linear 1;
+    -moz-animation: fadein 5s linear 1;
+    -o-animation: fadein 5s linear 1;
+    -ms-animation: fadein 5s linear 1;
+}
+
+
+/*header*/
+#home_icon_header{
+    margin-left: 550px;
+
+}
+
+.cd-auto-hide-header{
+    position:fixed;
+    z-index:2;
+    top:0;
+    left:0;
+    width:100%;
+    height:60px;
+    background-color:#fff;
+    -webkit-transform:translateZ(0);
+    transform:translateZ(0);
+    will-change:transform;
+    -webkit-transition:-webkit-transform .5s;
+    transition:-webkit-transform .5s;
+    transition:transform .5s;
+    transition:transform .5s,-webkit-transform .5s
+}
+.cd-auto-hide-header::after{
+    clear:both;
+    content:"";
+    display:block
+}
+.cd-auto-hide-header.is-hidden{
+    -webkit-transform:translateY(-100%);
+    -ms-transform:translateY(-100%);
+    transform:translateY(-100%)
+}@media only screen and (min-width:1024px){
+    .cd-auto-hide-header{
+        height:80px
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

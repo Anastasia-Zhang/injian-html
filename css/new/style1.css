@@ -1,0 +1,32 @@
+.language-chooser li.active span:after,li:hover span:after {
+    content: 'â€¢';
+    margin-left: 4px;
+}
+.filtroout span.cat:after,span.cat:hover:after {
+    content: 'â€¢';
+    color: #1d1d1b;
+    margin-left: 7px;
+}
+.all-articles-f:before {
+    content: 'âœ“';
+}
+
+.multi-active-f .all-articles-f:before {
+    content: "âœ•";
+}
+
+.f-b-r:before {
+    content: "âœ•";
+    display: inline-block;
+    width: 20px;
+}
+.radio-va.attivo:after {
+    content: ' âœ“';
+}
+.f-b-r.active:before {
+    content: 'âœ“';
+}
+span.plus:before {
+    content: 'âœ•';
+    font-size: 14px;
+}

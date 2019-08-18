@@ -1,0 +1,20 @@
+.contact_img_head{
+    height: 780px;
+}
+.injian_contact_p{
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    font-family: 腾祥嘉丽细圆简;
+    padding-left: 20%;
+    margin-top: -30%;
+}
+.contact_img{
+    display: inline-block;
+    margin-top: -35%;
+    margin-left: 32%;
+}
+.contactus-btn{
+    margin-top: -17%;
+    margin-left: -27%;
+}

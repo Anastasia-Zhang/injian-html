@@ -1,0 +1,33 @@
+
+/*项目起始页面CSS*/
+#injian_pic1{
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 500px;
+}
+#index_cloud {
+    background-color: #326696;
+    margin: 0px;
+    overflow: hidden;
+    position: fixed;
+    font-family:Monospace;
+    font-size:13px;
+}
+
+#index_enter{
+    color: #444444;
+    font-family: 汉仪初心少女简;
+    font-size: 25px;
+    position: absolute;
+    padding-top: 390px;
+    padding-left: 675px;
+    text-decoration: none;
+    height: 25px;
+    width: 70px;
+
+}
+#index_enter:hover{
+    color: #000;
+    font-weight: bolder;
+
+}

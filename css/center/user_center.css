@@ -1,0 +1,467 @@
+.return-home{
+    float: left;
+    margin-top: 3%;
+    color: #444444;
+}
+.return-home:hover{
+    color: red;
+}
+.p-user-info{
+    float: left;
+    margin-top: 5%;
+    margin-left: 5%;
+    font-size: 28px;
+
+}
+.info-user-list{
+    margin-left: 30%;
+    margin-top: 12%;
+    font-size: 20px;
+    line-height: 50px;
+}
+.user-info-display{
+    margin-bottom: 5%;
+}
+
+/*修改信息&&头像*/
+
+.alter-img-info{
+    float: left;
+    width: 100%;
+}
+.alter-user-img{
+    background-color: #fff;
+    border-color: #666666;
+    color: #666666;
+    border-radius: 200px;
+    font-size: 20px;
+    width: 19%;
+    height: 47.2px;
+    line-height: 47.2px;
+    text-decoration: none;
+    float: left;
+    outline-style: none;
+    margin-top: 5%;
+    margin-left: 6%;
+}
+.alter-user-img:hover, .alter-user-img:focus{
+
+    background-color: #0a628f;
+    border-color: #0a628f;
+    color: #FFF; }
+.alter-user-img:visited{
+    color: #FFF;
+}
+
+.alter-user-img:active{
+    background-color:#0a628f;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: .3;
+}
+
+
+.alter-user-info{
+    background-color: #fff;
+    border-color: #666666;
+    color: #666666;
+    border-radius: 200px;
+    font-size: 20px;
+    width: 19%;
+    height: 47.2px;
+    line-height: 47.2px;
+    text-decoration: none;
+    float: left;
+    outline-style: none;
+    margin-top: 15%;
+    margin-left: -19%;
+    margin-bottom: 10%;
+
+}
+.alter-user-info:hover, .alter-user-info:focus{
+
+    background-color: #0a628f;
+    border-color: #0a628f;
+    color: #FFF; }
+.alter-user-info:visited{
+    color: #FFF;
+}
+.alter-user-info:active {
+    background-color: #0a628f;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: .3;
+}
+#imageUpload{
+    width: 80%;
+    margin-top: 5%;
+    margin-left: 35%;
+    float: left;
+}
+.user-img-p{
+    margin-left: -25%;
+    padding-top: 5%;
+    font-size: 28px;
+}
+.file-btn-ch{
+    height: 50px;
+    outline-style: none;
+}
+.a-upload {
+    padding: 4px 10px;
+    height: 40px;
+    line-height: 20px;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+    *display: inline;
+    *zoom: 1
+}
+.a-upload  input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+.a-upload:hover {
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none;
+    border: black;
+}
+.up-up-file{
+    margin-top: -3%;
+}
+.up-img-file{
+    background-color: #fff;
+    border-color: #98a7ac;
+    color: #666666;
+    border-radius: 200px;
+    font-size: 17px;
+    width: 12%;
+    height: 35px;
+    text-decoration: none;
+    float: left;
+    outline-style: none;
+    margin-top: -5%;
+    margin-left: 25%;
+    text-align: center;
+
+}
+.up-img-file:hover, .up-img-file:focus{
+
+    background-color: #98a7ac;
+    border-color: #000;
+    color: #FFF; }
+.up-img-file:visited{
+    color: #FFF;
+}
+.up-img-file:active {
+    background-color: #98a7ac;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: .3;
+}
+.alter-gr-info{
+    margin-top: 23%;
+    width: 50%;
+    margin-left: 30%;
+    margin-right: 25%;
+    font-size: 20px;
+}
+.alter-user-name,.alter-user-email input{
+    width: 60%;
+    outline-style: none;
+    border: #222222;
+}
+.lable-info{
+    line-height: 70px;
+    margin-left: -20%;
+    margin-top: 5%;
+}
+.input-name{
+    line-height: 100px;
+    margin-top: -37%;
+    margin-left: 5%;
+}
+.submit-user-info-alter{
+    margin-top: 9%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+}
+.submit-user-info-alter-b{
+    background-color: #fff;
+    border-color: #98a7ac;
+    color: #666666;
+    border-radius: 200px;
+    font-size: 17px;
+    width: 30%;
+    height: 35px;
+    text-decoration: none;
+    float: left;
+    outline-style: none;
+    text-align: center;
+    margin-bottom: 20%;
+
+}
+.submit-user-info-alter-b:hover, .submit-user-info-alter-b:focus{
+
+    background-color: #98a7ac;
+    border-color: #000;
+    color: #FFF; }
+.submit-user-info-alter-b:visited{
+    color: #FFF;
+}
+.submit-user-info-alter-b:active {
+    background-color: #98a7ac;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: .3;
+}
+/*地址信息*/
+.address-info{
+    width: 100%;
+}
+.from-group{
+    width: 100%;
+}
+.p-address-info{
+    float: left;
+    margin-top: 5%;
+    margin-left: 0%;
+    font-size: 28px;
+}
+.table-address{
+    padding-top: 15%;
+    font-family: 腾祥嘉丽细圆简;
+}
+
+.content{
+    width: 100%;
+}
+
+.p-alter-address{
+    float: left;
+    margin-top: 3%;
+    margin-left: -40%;
+    font-size: 23px;
+}
+
+.add-panel{
+    font-family: 腾祥嘉丽细圆简;
+    width: 100%;
+}
+.add-label{
+    line-height: 70px;
+    padding-left: -60%;
+    padding-top: 20%;
+
+}
+.add-input{
+    line-height: 70px;
+    margin-top: -55%;
+    margin-left:27%;
+}
+
+.input-uname,.input-unum,.input-uemail,.input-uadd{
+    width: 60%;
+    outline-style: none;
+    border: #222222 1px 1px 1px;
+    margin-bottom: 8%;
+    height: 30px;
+}
+.input-uname,.input-unum,.input-uemail,.input-uadd:hover{
+    outline-style: none;
+    border: #000 2px 1px 1px;
+}
+
+
+
+.sub-btn{
+    background-color: #fff;
+    border-color: #98a7ac;
+    color: #666666;
+    font-size: 17px;
+    border-radius: 200px;
+    width: 30%;
+    height: 35px;
+    text-decoration: none;
+    outline-style: none;
+    text-align: center;
+    margin-left: 19%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+
+}
+.sub-btn:hover, .sub-btn:focus{
+
+    background-color: #98a7ac;
+    border-color: #000;
+    color: #FFF; }
+.sub-btn:visited{
+    color: #FFF;
+}
+.sub-btn:active {
+    background-color: #98a7ac;
+    color: #fff;
+    opacity: .3;
+}
+
+.save-btn{
+    background-color: #fff;
+    border-color: #98a7ac;
+    color: #666666;
+    font-size: 17px;
+    border-radius: 200px;
+    width: 30%;
+    height: 35px;
+    text-decoration: none;
+    outline-style: none;
+    text-align: center;
+    margin-left: 15%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+
+}
+.save-btn:hover, .save-btn:focus{
+
+    background-color: #98a7ac;
+    border-color: #000;
+    color: #FFF; }
+.save-btn:visited{
+    color: #FFF;
+}
+.save-btn:active {
+    background-color: #98a7ac;
+    color: #fff;
+    opacity: .3;
+}
+
+#addbtnContainer{
+    margin-left: 10%;
+}
+#updatebtnContainer{
+    margin-left: 20%;
+}
+
+
+
+
+
+
+
+
+
+
+/*安全信息*/
+
+.pass-alter-p{
+    float: left;
+    margin-top: 5%;
+    margin-left: 5%;
+    font-size: 28px;
+}
+.content{
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 55%;
+}
+
+.number-check-p{
+    margin-bottom: 10%;
+    font-size: 25px;
+    font-family: 腾祥嘉丽细圆简;
+    text-align: center;
+}
+.safe-info{
+    font-family: 腾祥嘉丽细圆简;
+}
+.get-otp-btn{
+    background-color: #fff;
+    border-color: #98a7ac;
+    color: #666666;
+    font-size: 17px;
+    border-radius: 200px;
+    width: 30%;
+    height: 35px;
+    text-decoration: none;
+    float: right;
+    outline-style: none;
+    text-align: center;
+    margin-right: 3%;
+
+}
+.get-otp-btn:hover, .get-otp-btn:focus{
+
+    background-color: #98a7ac;
+    border-color: #000;
+    color: #FFF; }
+.get-otp-btn:visited{
+    color: #FFF;
+}
+.get-otp-btn:active {
+    background-color: #98a7ac;
+    color: #fff;
+    opacity: .3;
+}
+.number-label{
+    line-height: 70px;
+    margin-left: 12%;
+    margin-top: 5%;
+}
+.input-num{
+    line-height: 100px;
+    margin-top: -22%;
+    margin-left: 32%;
+}
+.input-otp,.input-number,.input-pass,.input-repass input{
+    width: 60%;
+    outline-style: none;
+    border: #222222;
+    margin-bottom: 8%;
+}
+
+.pass-btn{
+    background-color: #fff;
+    border-color: #98a7ac;
+    color: #666666;
+    font-size: 17px;
+    border-radius: 200px;
+    width: 30%;
+    height: 35px;
+    text-decoration: none;
+    outline-style: none;
+    text-align: center;
+    margin-left: 10%;
+
+}
+.pass-btn:hover, .pass-btn:focus{
+
+    background-color: #98a7ac;
+    border-color: #000;
+    color: #FFF; }
+.pass-btn:visited{
+    color: #FFF;
+}
+.pass-btn:active {
+    background-color: #98a7ac;
+    color: #fff;
+    opacity: .3;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+	<script src="js/plugins.js"></script>
+	<title>我的购物车浏览</title>
+	<style type="text/css">
+
+		.goTop >img{
+			width: 50px;
+			height: 50px;
+			cursor: pointer;
+		}
+		.goTop{
+			position: fixed;
+			right : 20px;
+			bottom : 20px;
+		}
+	</style>
+</head>
+<body class="login">
+	<div class="content" style="width: 100%">
+		<h3 class="form-title">购物车浏览</h3>
+		<div class="form-group">
+			<table calss="table" style="width: 100%">
+				<thead>
+					<tr>
+						<th> </th>
+						<th>商品名称</th>
+						<th>商品图片</th>
+						<th>商品价格</th>
+						<th>商品数量</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="container">
+					
+				</tbody>
+			</table>
+			<div class="form-actions">
+				<input type="checkbox" value="checkAll" id="checkAll">全选</input>
+				总金额： <div id="totalAmount"></div>
+				<button class="btn green" id="orderFromShopCar">下单</button>
+			</div>
+		</div>
+	</div>
+</body>
+<div class="goTop" id="js-go_top"><img src="img/icon_top.png" alt="回到顶部图片"></div>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="js/goToTop/GoToTop.js"></script>
+<script>
+	//示例
+	$('#js-go_top').gotoTop({
+		offset : 500, //距离顶部的位置
+		speed : 300, //移动到顶部的速度
+		/*     iconSpeed : 300, //icon动画样式的速度*/
+		animationShow : {
+			'transform' : 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		}, //icon动画样式显示时
+		animationHide : {
+			'transform' : 'translate(80px,0)',
+			'transition': 'transform .5s ease-in-out'
+		} //icon动画样式隐藏时
+	});
+</script>
+<script>
+	
+	//定义全局商品列表类
+	var g_shopCarListVO = {};
+	//定义全局商品数组信息
+	var g_shopCarList = [];
+	
+	
+	jQuery(document).ready(function(){
+		
+			$.ajax({
+				type:"GET",
+				url:"http://localhost:8070/shopCar/userShopCarlist",
+				xhrFields:{withCredentials:true},//使后端允许跨域请求@CrossOrigin(allowCredentials = "true",allowedHeaders = "*")
+				success:function(data){
+					if(data.status =="success"){
+						//获取后端数据
+						g_shopCarListVO = data.data;
+						g_shopCarList = g_shopCarListVO.shopCarProductVoLists;
+						reloadDOM();
+
+					}else{
+						alert("获取商品信息失败，原因为： "+data.data.errMsg);
+						if(data.data.errCode == 20003){
+							window.location.href = "login.html";
+						}
+					}
+				},
+				error:function(data){
+					alert("获取商品信息创建失败，原因为"+data.responseText);
+				}
+			});
+
+
+			//全选按钮
+			$("#checkAll").on("click",function(){
+				var checkAllStatus = $(this).prop("checked");//判断全选按钮的选中状态 true or false
+                $(".checkone").prop("checked",checkAllStatus);//让选择按钮和全选有一样的选中状态
+
+			});
+
+			$("#orderFromShopCar").on("click",function(){
+			    //判断商品的选择状态,商品在全局数组里
+			    var itemIdList = "";
+			    var orderItemList = [];
+			    for(var i = 0; i < g_shopCarList.length; i ++){
+			    	var checked = $("#checkproduct"+g_shopCarList[i].itemId).prop("checked");
+			    	if(checked){
+			    		itemIdList = itemIdList + g_shopCarList[i].itemId + " ";
+			    		orderItemList.push(g_shopCarList[i]);
+			    	}
+			    }
+
+			    //参数判断
+			    if(orderItemList.length == 0){
+			    	alert("请选择商品");
+			    	return false;
+			    }
+
+			    $.ajax({
+					type:"POST",
+					contentType:"application/x-www-form-urlencoded",
+					url:"http://localhost:8070/order/createshopCarorder",
+
+					data:{
+						"orderItemList":JSON.stringify(orderItemList),//json转成字符串
+						 
+					},
+
+					xhrFields:{withCredentials:true},
+
+					success:function(data){
+						if(data.status =="success"){
+							alert("下单成功");
+							//获取下单时的订单编号，当做参数传递到下一个页面
+							var orderList = data.data;
+							var orderIdList = "";
+							for(var i = 0;i < orderList.length; i++){
+								orderIdList = orderIdList + orderList[i].id + " ";
+							}
+							window.location.href = "confirmorder.html?orderIdList="+orderIdList;
+						}else{
+							alert("下单失败，原因为： "+data.data.errMsg);
+							
+							}
+					},
+				    error:function(data){
+					    alert("下单失败，原因为"+data.responseText);
+				    }
+				});
+			    
+			});
+
+
+			
+	});
+
+	function reloadDOM(){
+		//遍历数组插入表中
+		for (var i = 0; i < g_shopCarList.length; i++) {
+			var shopCarVO = g_shopCarList[i];
+			var dom = "<tr>"+
+						  "<td>"+
+						  	 "<input data-id='"+shopCarVO.itemId+"' type='checkbox' value='checkproduct' "+
+						  	              "id='checkproduct"+shopCarVO.itemId+"' class='checkone'/>"+
+						  "</td>"+
+			              "<td>"+
+			              	 "<a data-id='"+shopCarVO.itemId+"' id='itemDetail"+shopCarVO.itemId+"' >"+shopCarVO.itemName+"</a>"+
+			              "</td>"+
+			              "<td>"+
+			              	 "<img style='width:100px;height:auto;' src='"+shopCarVO.imgUrl+"'/>"+
+			              "</td>"+
+			              "<td>"+shopCarVO.itemPrice+"</td>"+
+			              "<td id='itemAmount'>"+
+				                "<a id='amountMinus'>-</a>"+
+				              	"<input data-id='"+shopCarVO.itemId+"' id='itemAmount_input "+shopCarVO.itemId+"' value='"+shopCarVO.amount+"'></input>"+
+				                "<a id='amountPlus'>+</a>"+
+			              "</td>"+
+			              "<td><a data-id='"+shopCarVO.itemId+"' id='itemDel"+shopCarVO.itemId+"'>删除</a></td>"+		              
+			          "</tr>";
+			$("#container").append($(dom));
+			$("#itemDetail"+shopCarVO.itemId).on("click",function(e){
+				window.location.href="getitem.html?id="+$(this).data("id");
+			});
+			$("#checkproduct").on("click",function(){
+
+
+			});
+
+			//按两边按钮inputText里数量变化
+
+
+			//删除指定商品
+			$("#itemDel"+shopCarVO.itemId).on("click",function(){
+				//当前商品id
+				var cur_shopCarItemId = $(this).data("id");
+				$.ajax({
+					type:"POST",
+					contentType:"application/x-www-form-urlencoded",
+					url:"http://localhost:8070/shopCar/delShopCarItem",
+
+					data:{
+						"itemId":cur_shopCarItemId,
+						
+					},
+
+					xhrFields:{withCredentials:true},
+
+					success:function(data){
+						if(data.status =="success"){
+							alert("删除成功")
+							window.location.reload();
+						}else{
+							alert("删除失败，原因为： "+data.data.errMsg);
+							
+							}
+					},
+				    error:function(data){
+					    alert("删除失败，原因为"+data.responseText);
+				    }
+				});
+			});
+			
+
+			//修改商品数量，change有时不触发？？
+			$("#itemAmount_input"+shopCarVO.itemId).change(function(){
+
+				$.ajax({
+					type:"POST",
+					contentType:"application/x-www-form-urlencoded",
+					url:"http://localhost:8070/shopCar/updateShopCarItemAmount",
+
+					data:{
+						"itemId":$("#itemAmount_input"+shopCarVO.itemId).data("id"),//元素中自定义属性data-* 名称不能包含大写字母
+						"amount":$("#itemAmount_input"+shopCarVO.itemId).val(),
+					},
+
+					xhrFields:{withCredentials:true},
+
+					success:function(data){
+						if(data.status =="success"){
+							alert("修改成功")
+							window.location.reload();
+						}else{
+							alert("修改失败，原因为： "+data.data.errMsg);
+							
+							}
+					},
+				    error:function(data){
+					    alert("修改失败，原因为"+data.responseText);
+				    }
+				});
+			});
+			
+		}
+		
+	}
+
+	
+
+
+	
+
+	
+	
+</script>
+<style>
+
+	.panel_login_after {
+		background: white;
+		position: fixed;
+		right: 0;
+		top: 81px;
+		padding: 30px 40px;
+		display: none;
+		-webkit-box-shadow: 0px 29px 36px 0px rgba(0,0,0,0.15);
+		-moz-box-shadow: 0px 29px 36px 0px rgba(0,0,0,0.15);
+		box-shadow: 0px 29px 36px 0px rgba(0,0,0,0.15);
+		z-index:-1;
+	}
+	div#accedi:hover .panel_login_after {
+		display: block;
+	}
+	a.weixin {
+		position: relative;
+	}
+
+	.weixin img.qrcode {
+		position: absolute;
+		z-index: 80;
+		width: 100px;
+		max-width: none;
+		height: 100px;
+		transform: scale(0);
+		transform-origin: top right;
+		opacity: 0;
+		border: .3125rem solid transparent;
+		border-radius: .25rem;
+		-webkit-transition: all .4s ease-in-out;
+		-o-transition: all .4s ease-in-out;
+		transition: all .4s ease-in-out;
+
+	}
+
+	.weixin:hover img.qrcode {
+		transform: scale(1);
+		opacity: 1;
+	}
+	/* 动态为footer添加类fixed-bottom */
+	.fixed-bottom {position: fixed;bottom: 0;width:100%;}
+	.goTop >img{
+		width: 50px;
+		height: 50px;
+		cursor: pointer;
+	}
+	.goTop{
+		position: fixed;
+		right : 20px;
+		bottom : 20px;
+	}
+</style>
+</html>

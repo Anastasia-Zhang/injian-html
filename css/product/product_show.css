@@ -1,0 +1,34 @@
+.item-container{
+    margin-top: 2.5%;
+}
+.hot-product-h4{
+    text-align: center;
+    font-size: 35px;
+    font-family: Generica;
+    color: #222222;
+    margin-top: 1%;
+    font-weight: bold;
+    border: 1px solid #333333;
+    border-radius: 60px;
+    height: 50px;
+    width: 280px;
+    padding-top: 2%;
+    margin-left: 40%;
+}
+.more-hot-product{
+    text-align: center;
+    margin-right: 5%;
+    margin-top: -3%;
+    float: right;
+    font-family: Generica;
+    color: black;
+    border: 1px solid #333333;
+    height: 30px;
+    width: 80px;
+    padding-top: 0.4%;
+    border-radius: 30px;
+}
+.more-hot-product:hover{
+    background: black;
+    color: white;
+}
